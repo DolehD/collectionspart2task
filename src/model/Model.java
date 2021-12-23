@@ -154,4 +154,20 @@ public class Model {
     public void setDateOfCreation(String dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
+    public void setLoginToEnum() throws IllegalLoginException {
+        Login.Login2.setLogin(nickName);
+
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name: ")
+                .append(name)
+                .append(", Surname: ")
+                .append(surname)
+                .append(", Login: ")
+                .append(nickName);
+        return sb.toString();
+    }
 }

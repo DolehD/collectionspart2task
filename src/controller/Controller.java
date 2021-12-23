@@ -1,5 +1,6 @@
 package controller;
 
+import model.IllegalLoginException;
 import model.Model;
 import view.View;
 
@@ -21,5 +22,18 @@ public class Controller {
         Notebook Notebook = new Notebook(model, view, new UtilityController(view, scanner));
 
         Notebook.saveDataToModel();
+        boolean sameLogin = true;
+        while (sameLogin) {
+            try {
+                model.setLoginToEnum();
+                sameLogin = false;
+            } catch (IllegalLoginException e) {
+                view.showMessage(e.getMessage());
+                Notebook.saveDataToModel();
+            }
+        }
+
+        view.showMessage(model.toString());
     }
 }
+
